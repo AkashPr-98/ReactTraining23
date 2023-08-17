@@ -2,6 +2,8 @@ import abc from './logo.svg';
 import './App.css';
 import Home from './Components/Home'
 import ArrayMethods from './Components/ArrayMethods'
+import Events from './Components/Events'
+import UseStateDemo from './Components/UseStateDemo'
 
 // function Home() {
 //   return (
@@ -31,8 +33,8 @@ function App() {
   return (
     <>
       <div className="App">
-        <Home name={name} age={age} profession={profession}
-        car={car}/>
+        {/* <Home name={name} age={age} profession={profession}
+        car={car}/> */}
 
         {/* <h1>Home1 Page</h1>
         <Home name="Akash" age={25} profession="Developer"
@@ -40,6 +42,10 @@ function App() {
         {/* <h1>Home2 Page</h1>
         <Home name="Piyush" age={29} profession="Devops Engineer"/> */}
         {/* <ArrayMethods /> */}
+
+        <Events/>
+        <UseStateDemo/>
+
       </div>
     </>
   );
