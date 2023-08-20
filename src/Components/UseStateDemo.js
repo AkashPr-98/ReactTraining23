@@ -23,19 +23,32 @@ function UseStateDemo() {
     const [state, setState] = useState("")
     const [zip, setZip] = useState("")
 
-    const [userData, setUserData] = useState({})
+    // const [userData, setUserData] = useState({})
+    const [usersData, setUsersData] = useState([])
     // const [count, setCount] = useState(0)
 
-    function handleSubmit(e){
+    // function handleSubmit(e){
+    //     e.preventDefault()
+    //     setUserData({
+    //         abc: fname,
+    //         def: lname,
+    //         ghi: email,
+    //         jkl: city,
+    //         mno: state,
+    //         xyz: zip
+    //     })
+    // }
+
+    function handleSubmit(e) {
         e.preventDefault()
-        setUserData({
+        setUsersData([{
             abc: fname,
             def: lname,
             ghi: email,
             jkl: city,
             mno: state,
             xyz: zip
-        })
+        }, ...usersData])
     }
 
     return (
@@ -56,14 +69,14 @@ function UseStateDemo() {
                 <h1>{fname}</h1>
             </div> */}
             <form className="row g-3 needs-validation container ms-5 mt-5" novalidate
-            onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}>
                 <div className="col-md-4">
                     <label for="validationCustom01" className="form-label">First name</label>
-                    <input type="text" className="form-control" id="validationCustom01" value={fname} required 
-                    onChange={(e) => {
-                        setFname(e.target.value)
-                        console.log("e.target.value", e.target.value);
-                    }}/>
+                    <input type="text" className="form-control" id="validationCustom01" value={fname} required
+                        onChange={(e) => {
+                            setFname(e.target.value)
+                            console.log("e.target.value", e.target.value);
+                        }} />
                     {/* <p>{fname}</p> */}
                     <div className="valid-feedback">
                         Looks good!
@@ -71,8 +84,8 @@ function UseStateDemo() {
                 </div>
                 <div className="col-md-4">
                     <label for="validationCustom02" className="form-label">Last name</label>
-                    <input type="text" className="form-control" id="validationCustom02" value={lname} required 
-                    onChange={(e) => setLname(e.target.value)}/>
+                    <input type="text" className="form-control" id="validationCustom02" value={lname} required
+                        onChange={(e) => setLname(e.target.value)} />
                     <div className="valid-feedback">
                         Looks good!
                     </div>
@@ -81,9 +94,9 @@ function UseStateDemo() {
                     <label for="validationCustomUsername" className="form-label">Username</label>
                     <div className="input-group has-validation">
                         <span className="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" className="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required 
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}/>
+                        <input type="text" className="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email} />
                         <div className="invalid-feedback">
                             Please choose a username.
                         </div>
@@ -91,9 +104,9 @@ function UseStateDemo() {
                 </div>
                 <div className="col-md-6">
                     <label for="validationCustom03" className="form-label">City</label>
-                    <input type="text" className="form-control" id="validationCustom03" required 
-                    onChange={(e) => setCity(e.target.value)}
-                    value={city}/>
+                    <input type="text" className="form-control" id="validationCustom03" required
+                        onChange={(e) => setCity(e.target.value)}
+                        value={city} />
                     <div className="invalid-feedback">
                         Please provide a valid city.
                     </div>
@@ -101,11 +114,11 @@ function UseStateDemo() {
                 <div className="col-md-3">
                     <label for="validationCustom04" className="form-label">State</label>
                     <select className="form-select" id="validationCustom04" required
-                    onChange={(e) => {
-                        setState(e.target.value)
-                        console.log("e.target.value of selected option", e.target.value);
-                    }}
-                    value={state}>
+                        onChange={(e) => {
+                            setState(e.target.value)
+                            console.log("e.target.value of selected option", e.target.value);
+                        }}
+                        value={state}>
                         <option selected disabled value="">Choose...</option>
                         <option value="MH">Maharashtra</option>
                         <option value="UP">Uttar Pradesh</option>
@@ -117,9 +130,9 @@ function UseStateDemo() {
                 </div>
                 <div className="col-md-3">
                     <label for="validationCustom05" className="form-label">Zip</label>
-                    <input type="text" className="form-control" id="validationCustom05" required 
-                    onChange={(e) => setZip(e.target.value)}
-                    value={zip}/>
+                    <input type="text" className="form-control" id="validationCustom05" required
+                        onChange={(e) => setZip(e.target.value)}
+                        value={zip} />
                     <div className="invalid-feedback">
                         Please provide a valid zip.
                     </div>
@@ -141,14 +154,18 @@ function UseStateDemo() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{userData.abc}</td>
-                        <td>{userData.def}</td>
-                        <td>{userData.ghi}</td>
-                        <td>{userData.jkl}</td>
-                        <td>{userData.mno}</td>
-                        <td>{userData.xyz}</td>
-                    </tr>
+                    {usersData.map(a => {
+                        return (
+                            <tr>
+                                <td>{a.abc}</td>
+                                <td>{a.def}</td>
+                                <td>{a.ghi}</td>
+                                <td>{a.jkl}</td>
+                                <td>{a.mno}</td>
+                                <td>{a.xyz}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </>

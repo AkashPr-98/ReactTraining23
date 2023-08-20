@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import ArrayMethods from './Components/ArrayMethods'
 import Events from './Components/Events'
 import UseStateDemo from './Components/UseStateDemo'
+import UseEffectDemo from './Components/UseEffectDemo';
 
 // function Home() {
 //   return (
@@ -43,8 +44,10 @@ function App() {
         <Home name="Piyush" age={29} profession="Devops Engineer"/> */}
         {/* <ArrayMethods /> */}
 
-        <Events/>
-        <UseStateDemo/>
+        {/* <Events/>
+        <UseStateDemo/> */}
+
+        <UseEffectDemo/>
 
       </div>
     </>
