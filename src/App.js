@@ -5,6 +5,7 @@ import ArrayMethods from './Components/ArrayMethods'
 import Events from './Components/Events'
 import UseStateDemo from './Components/UseStateDemo'
 import UseEffectDemo from './Components/UseEffectDemo';
+import UseContextDemo from './Components/UseContextDemo';
 
 // function Home() {
 //   return (
@@ -22,14 +23,14 @@ import UseEffectDemo from './Components/UseEffectDemo';
 
 function App() {
 
-  const name = "Akash"
-  const age = 25
-  const profession = "Developer"
+  // const name = "Akash"
+  // const age = 25
+  // const profession = "Developer"
 
-  const car = {
-    brand: "Tata",
-    model: "Nexon"
-  }
+  // const car = {
+  //   brand: "Tata",
+  //   model: "Nexon"
+  // }
 
   return (
     <>
@@ -37,8 +38,8 @@ function App() {
         {/* <Home name={name} age={age} profession={profession}
         car={car}/> */}
 
-        {/* <h1>Home1 Page</h1>
-        <Home name="Akash" age={25} profession="Developer"
+        <h1>Home1 Page</h1>
+        {/* <Home name="Akash" age={25} profession="Developer"
         car={car}/> */}
         {/* <h1>Home2 Page</h1>
         <Home name="Piyush" age={29} profession="Devops Engineer"/> */}
@@ -46,8 +47,12 @@ function App() {
 
         {/* <Events/>
         <UseStateDemo/> */}
+        {/* <UseEffectDemo/> */}
 
-        <UseEffectDemo/>
+        <UseContextDemo>
+          <Home />
+        </UseContextDemo>
+
 
       </div>
     </>
