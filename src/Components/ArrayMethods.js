@@ -51,4 +51,11 @@ function ArrayMethods() {
     )
 }
 
+function ContactUs(){
+    return(
+        <h1>This is ContactUs Page</h1>
+    )
+}
+
 export default ArrayMethods
+export {ContactUs}

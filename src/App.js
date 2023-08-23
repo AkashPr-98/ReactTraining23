@@ -6,6 +6,10 @@ import Events from './Components/Events'
 import UseStateDemo from './Components/UseStateDemo'
 import UseEffectDemo from './Components/UseEffectDemo';
 import UseContextDemo from './Components/UseContextDemo';
+import Navbar from './Components/Navbar';
+import { ContactUs } from './Components/ArrayMethods';
+// import { ContUs } from './Components/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // function Home() {
 //   return (
@@ -33,12 +37,10 @@ function App() {
   // }
 
   return (
-    <>
+    <BrowserRouter>
       <div className="App">
         {/* <Home name={name} age={age} profession={profession}
         car={car}/> */}
-
-        <h1>Home1 Page</h1>
         {/* <Home name="Akash" age={25} profession="Developer"
         car={car}/> */}
         {/* <h1>Home2 Page</h1>
@@ -49,13 +51,23 @@ function App() {
         <UseStateDemo/> */}
         {/* <UseEffectDemo/> */}
 
+        <Navbar />
+
         <UseContextDemo>
-          <Home />
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/array' element={<ArrayMethods/>}/>
+            <Route path='/events' element={<Events/>}/>
+            <Route path='/effectdemo' element={<UseEffectDemo/>}/>
+            <Route path='/statedemo' element={<UseStateDemo/>}/>
+            <Route path='/contact' element={<ContactUs/>}/>
+            {/* <Route path='/contact1' element={<ContUs/>}/> */}
+          </Routes>
         </UseContextDemo>
 
 
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
