@@ -1,15 +1,16 @@
-import abc from './logo.svg';
+// import abc from './logo.svg';
 import './App.css';
-import Home from './Components/Home'
-import ArrayMethods from './Components/ArrayMethods'
-import Events from './Components/Events'
-import UseStateDemo from './Components/UseStateDemo'
-import UseEffectDemo from './Components/UseEffectDemo';
+// import Home from './Components/Home'
+// import ArrayMethods from './Components/ArrayMethods'
+// import Events from './Components/Events'
+// import UseStateDemo from './Components/UseStateDemo'
+// import UseEffectDemo from './Components/UseEffectDemo';
 import UseContextDemo from './Components/UseContextDemo';
 import Navbar from './Components/Navbar';
-import { ContactUs } from './Components/ArrayMethods';
+// import { ContactUs } from './Components/ArrayMethods';
 // import { ContUs } from './Components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Registration from './Components/Registration';
 
 // function Home() {
 //   return (
@@ -55,13 +56,7 @@ function App() {
 
         <UseContextDemo>
           <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/array' element={<ArrayMethods/>}/>
-            <Route path='/events' element={<Events/>}/>
-            <Route path='/effectdemo' element={<UseEffectDemo/>}/>
-            <Route path='/statedemo' element={<UseStateDemo/>}/>
-            <Route path='/contact' element={<ContactUs/>}/>
-            {/* <Route path='/contact1' element={<ContUs/>}/> */}
+              <Route path='/' element={<Registration/>}/>
           </Routes>
         </UseContextDemo>
 
@@ -73,3 +68,11 @@ function App() {
 
 export default App;
 // export {Home}
+
+{/* <Route path='/' element={<Home/>}/>
+<Route path='/array' element={<ArrayMethods/>}/>
+<Route path='/events' element={<Events/>}/>
+<Route path='/effectdemo' element={<UseEffectDemo/>}/>
+<Route path='/statedemo' element={<UseStateDemo/>}/>
+<Route path='/contact' element={<ContactUs/>}/> */}
+{/* <Route path='/contact1' element={<ContUs/>}/> */}
