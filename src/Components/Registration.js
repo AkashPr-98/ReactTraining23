@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 export default function Registration() {
@@ -9,9 +10,22 @@ export default function Registration() {
     const [city, setCity] = useState("")
     const [password, setPassword] = useState("")
 
+    function handleSubmit(e){
+        e.preventDefault()
+        let newData = {first_name:fname, last_name:lname, age, email, city, password}
+        axios.post('http://localhost:8000/user/register', newData)
+        .then(res => {
+            console.log(res.data);
+            alert("Form submitted successfully")
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     return (
         <div className='container mt-4'>
-            <form class="row g-3 needs-validation" novalidate>
+            <form class="row g-3 needs-validation" novalidate onSubmit={handleSubmit}>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">First name</label>
                     <input type="text" class="form-control" id="validationCustom01" value={fname} required
