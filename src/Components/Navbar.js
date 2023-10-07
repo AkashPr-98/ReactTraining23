@@ -10,12 +10,12 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                            <Link className="nav-link active" aria-current="page" to="/">Registration</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/array">ArrayComponent</Link>
+                            <Link className="nav-link" to="/users">Users</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/events">Events</Link>
                         </li>
                         <li className="nav-item">
@@ -26,7 +26,7 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact Us</Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

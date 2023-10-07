@@ -11,6 +11,7 @@ import Navbar from './Components/Navbar';
 // import { ContUs } from './Components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Registration from './Components/Registration';
+import Users from './Components/Users';
 
 // function Home() {
 //   return (
@@ -57,6 +58,7 @@ function App() {
         <UseContextDemo>
           <Routes>
               <Route path='/' element={<Registration/>}/>
+              <Route path='/users' element={<Users/>}/>
           </Routes>
         </UseContextDemo>
 
@@ -66,13 +68,4 @@ function App() {
   );
 }
 
-export default App;
-// export {Home}
-
-{/* <Route path='/' element={<Home/>}/>
-<Route path='/array' element={<ArrayMethods/>}/>
-<Route path='/events' element={<Events/>}/>
-<Route path='/effectdemo' element={<UseEffectDemo/>}/>
-<Route path='/statedemo' element={<UseStateDemo/>}/>
-<Route path='/contact' element={<ContactUs/>}/> */}
-{/* <Route path='/contact1' element={<ContUs/>}/> */}
+export default App
