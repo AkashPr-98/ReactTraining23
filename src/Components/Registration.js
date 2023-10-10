@@ -13,7 +13,7 @@ export default function Registration() {
     function handleSubmit(e){
         e.preventDefault()
         let newData = {first_name:fname, last_name:lname, age, email, city, password}
-        axios.post('http://localhost:8000/user/register', newData)
+        axios.post('/register', newData)
         .then(res => {
             console.log(res.data);
             alert("Form submitted successfully")
@@ -71,7 +71,7 @@ export default function Registration() {
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom05" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="validationCustom05" value={password} required 
+                    <input type="password" class="form-control" id="validationCustom05" value={password} required 
                     onChange={(e) => setPassword(e.target.value)} />
                     <div class="invalid-feedback">
                         Please provide a valid password.
