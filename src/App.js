@@ -13,6 +13,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Registration from './Components/Registration';
 import Users from './Components/Users';
 import axios from 'axios';
+import UpdateForm from './Components/UpdateForm';
+import ContextForForm from './Components/ContextForForm';
 
 // function Home() {
 //   return (
@@ -59,10 +61,13 @@ function App() {
         <Navbar />
 
         <UseContextDemo>
-          <Routes>
-              <Route path='/' element={<Registration/>}/>
-              <Route path='/users' element={<Users/>}/>
-          </Routes>
+          <ContextForForm>
+            <Routes>
+              <Route path='/' element={<Registration />} />
+              <Route path='/users' element={<Users />} />
+              <Route path='/update' element={<UpdateForm />} />
+            </Routes>
+          </ContextForForm>
         </UseContextDemo>
 
 

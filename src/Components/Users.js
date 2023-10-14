@@ -1,18 +1,38 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { FormContext } from './ContextForForm'
+import { useNavigate } from 'react-router-dom'
 
 function Users() {
+
+    const navigate = useNavigate()
+
+    const { setUserId } = useContext(FormContext)
 
     const [userData, setUserData] = useState([])
 
     useEffect(() => {
+        getAllUsers()
+    }, [])
+
+    function getAllUsers() {
         axios.get('/allUsers')
             .then(res => {
                 console.log(res.data.abc)
                 setUserData(res.data.abc)
             })
             .catch(err => console.log(err))
-    }, [])
+    }
+
+    function handleDelete(xyz) {
+        axios.delete(`/dluser/${xyz}`)
+            .then(res => {
+                console.log(res.data);
+                getAllUsers()
+            }).catch(err => {
+                console.log(err);
+            })
+    }
 
     return (
         <>
@@ -29,7 +49,7 @@ function Users() {
 
                 <tbody>
                     {userData.map(abc => {
-                        return(
+                        return (
                             <tr>
                                 <td>{abc.first_name}</td>
                                 <td>{abc.last_name}</td>
@@ -37,8 +57,13 @@ function Users() {
                                 <td>{abc.city}</td>
                                 <td>{abc.age}</td>
                                 <td className='d-flex justify-content-evenly'>
-                                    <button className='btn btn-warning'>Update</button>
-                                    <button className='btn btn-danger'>Delete</button>
+                                    <button className='btn btn-warning'
+                                        onClick={() => {
+                                            setUserId(abc._id)
+                                            navigate('/update')
+                                        }}>Update</button>
+                                    <button className='btn btn-danger'
+                                        onClick={() => handleDelete(abc._id)}>Delete</button>
                                 </td>
                             </tr>
                         )

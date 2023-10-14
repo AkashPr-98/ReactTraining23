@@ -15,6 +15,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/users">Users</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/update">Update</Link>
+                        </li>
                         {/* <li className="nav-item">
                             <Link className="nav-link" to="/events">Events</Link>
                         </li>
@@ -34,11 +37,11 @@ function Navbar() {
     )
 }
 
-function ContactUs() {
-    return (
-        <h1>This is ContactUs Page in Navbar</h1>
-    )
-}
+// function ContactUs() {
+//     return (
+//         <h1>This is ContactUs Page in Navbar</h1>
+//     )
+// }
 
 export default Navbar
-export { ContactUs }
+// export { ContactUs }
