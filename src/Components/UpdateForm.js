@@ -17,7 +17,9 @@ export default function UpdateForm() {
 
     useEffect(() => {
         getUserById()
-    }, [])
+    },
+    // eslint-disable-next-line 
+    [])
 
     function getUserById(){
         axios.get(`/finduser/${userId}`)

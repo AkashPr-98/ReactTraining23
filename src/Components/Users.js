@@ -7,7 +7,7 @@ function Users() {
 
     const navigate = useNavigate()
 
-    const { setUserId } = useContext(FormContext)
+    const { setUserId, basePhotoPath } = useContext(FormContext)
 
     const [userData, setUserData] = useState([])
 
@@ -44,6 +44,7 @@ function Users() {
                     <th>Email</th>
                     <th>City</th>
                     <th>Age</th>
+                    <th>Profile Photo</th>
                     <th>Action</th>
                 </thead>
 
@@ -56,7 +57,11 @@ function Users() {
                                 <td>{abc.email}</td>
                                 <td>{abc.city}</td>
                                 <td>{abc.age}</td>
-                                <td className='d-flex justify-content-evenly'>
+                                <td>
+                                    <img src={`${basePhotoPath}/uploads/images/${abc.photo}`} alt="" 
+                                    height="50rem"/>
+                                </td>
+                                <td className='d-flex justify-content-evenly p-3'>
                                     <button className='btn btn-warning'
                                         onClick={() => {
                                             setUserId(abc._id)

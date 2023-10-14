@@ -9,11 +9,20 @@ export default function Registration() {
     const [email, setEmail] = useState("")
     const [city, setCity] = useState("")
     const [password, setPassword] = useState("")
+    const [photo, setPhoto] = useState(null)
 
     function handleSubmit(e){
         e.preventDefault()
-        let newData = {first_name:fname, last_name:lname, age, email, city, password}
-        axios.post('/register', newData)
+        // let newData = {first_name:fname, last_name:lname, age, email, city, password}
+        const formData = new FormData()
+        formData.append('first_name', fname)
+        formData.append('last_name', lname)
+        formData.append('age', age)
+        formData.append('city', city)
+        formData.append('email', email)
+        formData.append('password', password)
+        formData.append('photo', photo)
+        axios.post('/register', formData)
         .then(res => {
             console.log(res.data);
             alert("Form submitted successfully")
@@ -53,7 +62,7 @@ export default function Registration() {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">City</label>
                     <input type="text" class="form-control" id="validationCustom03" value={city} required 
                     onChange={(e) => setCity(e.target.value)}/>
@@ -73,6 +82,14 @@ export default function Registration() {
                     <label for="validationCustom05" class="form-label">Password</label>
                     <input type="password" class="form-control" id="validationCustom05" value={password} required 
                     onChange={(e) => setPassword(e.target.value)} />
+                    <div class="invalid-feedback">
+                        Please provide a valid password.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom06" class="form-label">Upload photo</label>
+                    <input type="file" class="form-control" id="validationCustom06" required 
+                    onChange={(e) => setPhoto(e.target.files[0])} />
                     <div class="invalid-feedback">
                         Please provide a valid password.
                     </div>
