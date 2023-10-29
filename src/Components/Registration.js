@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Registration() {
 
@@ -10,19 +10,38 @@ export default function Registration() {
     const [city, setCity] = useState("")
     const [password, setPassword] = useState("")
     const [photo, setPhoto] = useState(null)
+    const [base64, setBase64] = useState(null)
+    const [userPhoto, setUserPhoto] = useState("")
+
+    useEffect(() => {
+        axios.get('/allUsers')
+        .then(res => {
+            console.log(res.data.abc)
+            const oneData = res.data.abc.filter(a => a.last_name === "Sharma")
+            console.log("oneData", oneData);
+            setUserPhoto(oneData[0].photo)
+        })
+        .catch(err => console.log(err))
+    }, [])
+
+    function handleFileChange(e) {
+        const file = e.target.files[0]
+        setPhoto(file)
+
+        if(file){
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                const base64 = e.target.result
+                setBase64(base64)
+            }
+            reader.readAsDataURL(file)
+        }
+    }
 
     function handleSubmit(e){
         e.preventDefault()
-        // let newData = {first_name:fname, last_name:lname, age, email, city, password}
-        const formData = new FormData()
-        formData.append('first_name', fname)
-        formData.append('last_name', lname)
-        formData.append('age', age)
-        formData.append('city', city)
-        formData.append('email', email)
-        formData.append('password', password)
-        formData.append('photo', photo)
-        axios.post('/register', formData)
+        let newData = {first_name:fname, last_name:lname, age, email, city, password, photo:base64}
+        axios.post('/register', newData)
         .then(res => {
             console.log(res.data);
             alert("Form submitted successfully")
@@ -89,7 +108,7 @@ export default function Registration() {
                 <div class="col-md-3">
                     <label for="validationCustom06" class="form-label">Upload photo</label>
                     <input type="file" class="form-control" id="validationCustom06" required 
-                    onChange={(e) => setPhoto(e.target.files[0])} />
+                    onChange={handleFileChange} />
                     <div class="invalid-feedback">
                         Please provide a valid password.
                     </div>
@@ -98,6 +117,8 @@ export default function Registration() {
                     <button class="btn btn-primary" type="submit">Submit form</button>
                 </div>
             </form>
+
+            <img src={userPhoto} alt="" className='img-fluid mt-5'/>
         </div>
     )
 }
