@@ -15,6 +15,7 @@ import Users from './Components/Users';
 import axios from 'axios';
 import UpdateForm from './Components/UpdateForm';
 import ContextForForm from './Components/ContextForForm';
+import StateCityDropdown from './Components/StateCityDropdown';
 
 // function Home() {
 //   return (
@@ -66,6 +67,7 @@ function App() {
               <Route path='/' element={<Registration />} />
               <Route path='/users' element={<Users />} />
               <Route path='/update' element={<UpdateForm />} />
+              <Route path='/dropdown' element={<StateCityDropdown />} />
             </Routes>
           </ContextForForm>
         </UseContextDemo>

@@ -18,6 +18,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/update">Update</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/dropdown">State/City</Link>
+                        </li>
                         {/* <li className="nav-item">
                             <Link className="nav-link" to="/events">Events</Link>
                         </li>
