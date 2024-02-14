@@ -47,12 +47,6 @@ function App() {
   axios.defaults.baseURL = 'http://localhost:8000/user'
   // axios.defaults.withCredentials = true
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  const handleLogin = () => {
-    setIsLoggedIn(true)
-  }
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -76,7 +70,7 @@ function App() {
               <Route path='/' element={<Registration />} />
               <Route path='/users' element={<Users />} />
               <Route path='/update' element={<UpdateForm />} />
-              <Route path='/login' element={<Login onLogin={handleLogin} />} />
+              <Route path='/login' element={<Login />} />
               <Route path='/user' element={<UserDetails />} />
             </Routes>
           </ContextForForm>
