@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Registration() {
 
@@ -10,12 +11,15 @@ export default function Registration() {
     const [city, setCity] = useState("")
     const [password, setPassword] = useState("")
 
+    const navigate = useNavigate()
+
     function handleSubmit(e){
         e.preventDefault()
         let newData = {first_name:fname, last_name:lname, age, email, city, password}
         axios.post('/register', newData)
         .then(res => {
             console.log(res.data);
+            navigate('/login')
             alert("Form submitted successfully")
         })
         .catch(err => {

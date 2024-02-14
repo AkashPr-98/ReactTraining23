@@ -9,12 +9,15 @@ import UseContextDemo from './Components/UseContextDemo';
 import Navbar from './Components/Navbar';
 // import { ContactUs } from './Components/ArrayMethods';
 // import { ContUs } from './Components/Navbar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Registration from './Components/Registration';
 import Users from './Components/Users';
 import axios from 'axios';
 import UpdateForm from './Components/UpdateForm';
 import ContextForForm from './Components/ContextForForm';
+import Login from './Components/Login';
+import UserDetails from './Components/UserDetails';
+import { useEffect, useState } from 'react';
 
 // function Home() {
 //   return (
@@ -42,6 +45,13 @@ function App() {
   // }
 
   axios.defaults.baseURL = 'http://localhost:8000/user'
+  // axios.defaults.withCredentials = true
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+  }
 
   return (
     <BrowserRouter>
@@ -66,6 +76,8 @@ function App() {
               <Route path='/' element={<Registration />} />
               <Route path='/users' element={<Users />} />
               <Route path='/update' element={<UpdateForm />} />
+              <Route path='/login' element={<Login onLogin={handleLogin} />} />
+              <Route path='/user' element={<UserDetails />} />
             </Routes>
           </ContextForForm>
         </UseContextDemo>

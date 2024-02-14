@@ -13,10 +13,19 @@ function Navbar() {
                             <Link className="nav-link active" aria-current="page" to="/">Registration</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to="/users">Users</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/update">Update</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/user">User Info</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Logout</Link>
                         </li>
                         {/* <li className="nav-item">
                             <Link className="nav-link" to="/events">Events</Link>
