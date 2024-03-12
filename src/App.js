@@ -45,7 +45,31 @@ function App() {
   // }
 
   axios.defaults.baseURL = 'http://localhost:8000/user'
-  // axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  function onLogin() {
+    setIsLoggedIn(true)
+  }
+
+  function onLogout() {
+    setIsLoggedIn(false)
+
+    // Clear cookies
+    // const cookies = document.cookie.split(';');
+    // for (let i = 0; i < cookies.length; i++) {
+    //   const cookie = cookies[i];
+    //   const eqPos = cookie.indexOf('=');
+    //   const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+    //   document.cookie = name + '=; expires=Thu, 10 Jan 2024 00:00:00 GMT; path=/;';
+    // }
+
+    const cookieName = document.cookie.split('=')[0]
+    console.log("cookieName", cookieName);
+    document.cookie = cookieName + '=; expires=Thu, 10 Jan 2024 00:00:00 GMT; path=/;';
+  }
+
 
   return (
     <BrowserRouter>
@@ -62,7 +86,7 @@ function App() {
         <UseStateDemo/> */}
         {/* <UseEffectDemo/> */}
 
-        <Navbar />
+        <Navbar onLogout={onLogout} />
 
         <UseContextDemo>
           <ContextForForm>
@@ -70,8 +94,8 @@ function App() {
               <Route path='/' element={<Registration />} />
               <Route path='/users' element={<Users />} />
               <Route path='/update' element={<UpdateForm />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/user' element={<UserDetails />} />
+              <Route path='/login' element={<Login onLogin={onLogin} />} />
+              <Route path='/user' element={isLoggedIn ? <UserDetails /> : <Navigate to='/login' />} />
             </Routes>
           </ContextForForm>
         </UseContextDemo>

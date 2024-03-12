@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
+export default function Login({onLogin}) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -17,7 +17,7 @@ export default function Login() {
                 console.log(res.data);
                 alert("Form submitted successfully")
                 navigate('/user')
-
+                onLogin()
             })
             .catch(err => {
                 console.log(err);

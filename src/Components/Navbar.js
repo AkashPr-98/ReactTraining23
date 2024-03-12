@@ -1,6 +1,20 @@
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 
-function Navbar() {
+function Navbar({onLogout}) {
+
+    function handleSubmit() {
+        axios.get('/logout')
+            .then(res => {
+                console.log(res.data);
+                alert("User logged out successfully")
+                onLogout()
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -25,7 +39,8 @@ function Navbar() {
                             <Link className="nav-link" to="/user">User Info</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Logout</Link>
+                            <Link className="nav-link" to="/"
+                                onClick={() => handleSubmit()}>Logout</Link>
                         </li>
                         {/* <li className="nav-item">
                             <Link className="nav-link" to="/events">Events</Link>

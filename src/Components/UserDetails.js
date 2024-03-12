@@ -8,7 +8,8 @@ export default function UserDetails() {
     useEffect(() => {
         axios.get('/find')
             .then(res => {
-                console.log(res.data);
+                console.log("user Details", res.data);
+                setUser(res.data)
             }).catch(err => {
                 console.log(err);
             })
@@ -16,7 +17,11 @@ export default function UserDetails() {
 
     return (
         <div>
-            <h1>First Name: </h1>
+            <h3 className='mt-5'>First Name: {user.first_name}</h3>
+            <h3 className='mt-5'>Last Name: {user.last_name}</h3>
+            <h3 className='mt-5'>Age: {user.age}</h3>
+            <h3 className='mt-5'>City: {user.city}</h3>
+            <h3 className='mt-5'>Email: {user.email}</h3>
         </div>
     )
 }
